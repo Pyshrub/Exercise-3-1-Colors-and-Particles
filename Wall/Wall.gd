@@ -9,4 +9,5 @@ func _physics_process(_delta):
 	pass
 
 func hit():
+	
 	pass
