@@ -2,23 +2,31 @@
 
 [ext_resource type="Script" path="res://Ball/Ball.gd" id="1"]
 [ext_resource type="Texture2D" uid="uid://ci6u7fajccmx3" path="res://Assets/Equipment/ball_tennis1.png" id="2_fjgaw"]
+[ext_resource type="Texture2D" uid="uid://cvsj6ut5dglkj" path="res://Assets/Equipment/ball_tennis2.png" id="3_yim8s"]
 
 [sub_resource type="PhysicsMaterial" id="2"]
 friction = 0.0
 bounce = 1.0
-
-[sub_resource type="CircleShape2D" id="1"]
-radius = 12.0
 
 [node name="Ball" type="RigidBody2D"]
 physics_material_override = SubResource("2")
 gravity_scale = 0.0
 script = ExtResource("1")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("1")
-
 [node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(22, 21)
+scale = Vector2(4.66667, 4.5)
 texture = ExtResource("2_fjgaw")
+
+[node name="Highlight" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(22.5, 20.5)
+scale = Vector2(4.75, 4.41667)
+texture = ExtResource("3_yim8s")
+
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="."]
+position = Vector2(22, 21)
+scale = Vector2(4.66667, 4.5)
+polygon = PackedVector2Array(6, 6, -6, 6, -6, -6, 6, -6)
 
 [connection signal="body_entered" from="." to="." method="_on_Ball_body_entered"]
